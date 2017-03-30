@@ -24,12 +24,11 @@ class Chef
 
       minimum_api_version 0
 
-      COOKBOOK_SEGMENTS = [ :resources, :providers, :recipes, :definitions, :libraries, :attributes, :files, :templates, :root_files ]
+      COOKBOOK_SEGMENTS = %w{ resources providers recipes definitions libraries attributes files templates root_files }
 
       def self.from_hash(hash)
         response = Mash.new
         response[:all_files] = COOKBOOK_SEGMENTS.inject([]) do |memo, segment|
-          segment = segment.to_s
           next memo if hash[segment].nil? || hash[segment].empty?
           hash[segment].each do |file|
             file["name"] = "#{segment}/#{file["name"]}" unless segment == "root_files"
@@ -40,6 +39,25 @@ class Chef
         response
       end
 
+      def self.to_hash(manifest)
+        result = manifest.manifest.dup
+        result.delete("all_files")
+
+        files = manifest.by_parent_directory
+        files.keys.inject(result) do |memo, parent|
+          if COOKBOOK_SEGMENTS.include?(parent)
+            memo[parent] ||= []
+            files[parent].each do |file|
+              file["name"] = file["name"].split("/")[1] unless parent == "root_files"
+              file.delete("full_path")
+              memo[parent] << file
+            end
+          end
+          memo
+        end
+
+        result.merge({ "frozen?" => manifest.frozen_version?, "chef_type" => "cookbook_version" })
+      end
     end
   end
 end

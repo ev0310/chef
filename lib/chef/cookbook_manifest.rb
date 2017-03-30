@@ -120,10 +120,7 @@ class Chef
     end
 
     def to_hash
-      result = manifest.dup
-      result["frozen?"] = frozen_version?
-      result["chef_type"] = "cookbook_version"
-      result.to_hash
+      CookbookManifestVersions.to_hash(self)
     end
 
     def to_json(*a)
@@ -314,5 +311,6 @@ class Chef
     add_versioned_api_class Chef::Cookbook::ManifestV2
 
     def_versioned_delegator :from_hash
+    def_versioned_delegator :to_hash
   end
 end

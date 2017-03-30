@@ -28,6 +28,14 @@ class Chef
         Mash.new hash
       end
 
+      def self.to_hash(manifest)
+        result = manifest.manifest.dup
+        result["all_files"].map! { |file| file.delete("full_path"); file }
+        result["frozen?"] = manifest.frozen_version?
+        result["chef_type"] = "cookbook_version"
+        result.to_hash
+      end
+
     end
   end
 end
