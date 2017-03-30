@@ -97,7 +97,7 @@ class Chef
           end
 
           def can_have_child?(name, is_dir)
-            if is_dir && !%w{ .. . }.include?(name)
+            if is_dir && !%w{ root_files .. . }.include?(name)
               # Only the given directories will be uploaded.
               return true
             elsif name == Chef::Cookbook::CookbookVersionLoader::UPLOADED_COOKBOOK_VERSION_FILE

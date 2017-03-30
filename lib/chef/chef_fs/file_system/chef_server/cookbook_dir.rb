@@ -68,7 +68,8 @@ class Chef
           end
 
           def can_have_child?(name, is_dir)
-            is_dir
+            return name != "root_files" if is_dir
+            true
           end
 
           def children
