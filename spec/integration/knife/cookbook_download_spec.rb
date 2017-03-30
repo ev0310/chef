@@ -35,6 +35,7 @@ describe "knife cookbook download", :workstation do
     it "knife cookbook download downloads the latest version" do
       knife("cookbook download -d #{tmpdir} x").should_succeed stderr: <<EOM
 Downloading x cookbook version 1.0.1
+Downloading root_files
 Cookbook downloaded to #{tmpdir}/x-1.0.1
 EOM
     end
@@ -42,6 +43,7 @@ EOM
     it "knife cookbook download with a version downloads the specified version" do
       knife("cookbook download -d #{tmpdir} x 1.0.1").should_succeed stderr: <<EOM
 Downloading x cookbook version 1.0.1
+Downloading root_files
 Cookbook downloaded to #{tmpdir}/x-1.0.1
 EOM
     end
@@ -60,6 +62,7 @@ EOM
     it "knife cookbook download with no version prompts" do
       knife("cookbook download -d #{tmpdir} x", input: "2\n").should_succeed(stderr: <<EOM, stdout: "Which version do you want to download?\n1. x 1.0.0\n2. x 1.0.1\n\n"
 Downloading x cookbook version 1.0.1
+Downloading root_files
 Cookbook downloaded to #{tmpdir}/x-1.0.1
 EOM
 )
