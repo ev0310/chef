@@ -131,7 +131,6 @@ describe Chef::CookbookManifest do
           "path"        => relative_path,
           "checksum"    => Chef::Digester.generate_md5_checksum_for_file(path),
           "specificity" => "default",
-          "full_path" => path,
         }
       end
     end
