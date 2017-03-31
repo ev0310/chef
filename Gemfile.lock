@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/chef/chef-server
-  revision: e530dd27a696ec154394f360411ae874adc4e3af
+  revision: 27f9ad580dc8a1a16e81bdd21835fad632b9d65e
   specs:
     oc-chef-pedant (2.2.0)
       activesupport (>= 4.2.7.1, < 6.0)
@@ -13,6 +13,18 @@ GIT
       rspec (~> 3.2)
       rspec-rerun (~> 1.0)
       rspec_junit_formatter (~> 0.2)
+
+GIT
+  remote: https://github.com/chef/chef-zero
+  revision: 268ba8026bb1b53c489f89e89e8fb3826aa4bcf7
+  branch: tm/rfc_67
+  specs:
+    chef-zero (5.3.2)
+      ffi-yajl (~> 2.2)
+      hashie (>= 2.0, < 4.0)
+      mixlib-log (~> 1.3)
+      rack (~> 2.0)
+      uuidtools (~> 2.1)
 
 GIT
   remote: https://github.com/chef/chefstyle.git
@@ -54,7 +66,7 @@ GIT
 
 GIT
   remote: https://github.com/poise/halite.git
-  revision: 09c4ef7c6b8188ec2b9a929de8d9f6aa3f620553
+  revision: cc93c8497977699289ff4726ad90b6db26d1da3c
   specs:
     halite (1.5.1.pre)
       bundler
@@ -64,7 +76,7 @@ GIT
 
 GIT
   remote: https://github.com/poise/poise-boiler.git
-  revision: d547f77ca7335af7943f681e1d0dd68c825cf429
+  revision: 40763eaded9384b1d8d3e3db6f883613b0a3ebe2
   specs:
     poise-boiler (1.14.1.pre)
       bundler
@@ -142,46 +154,6 @@ PATH
       specinfra (~> 2.10)
       syslog-logger (~> 1.6)
       uuidtools (~> 2.1.5)
-    chef (13.0.79-universal-mingw32)
-      addressable
-      bundler (>= 1.10)
-      chef-config (= 13.0.79)
-      chef-zero (>= 4.8)
-      diff-lcs (~> 1.2, >= 1.2.4)
-      erubis (~> 2.7)
-      ffi (~> 1.9)
-      ffi-yajl (~> 2.2)
-      highline (~> 1.6, >= 1.6.9)
-      iniparse (~> 1.4)
-      mixlib-archive (~> 0.4)
-      mixlib-authentication (~> 1.4)
-      mixlib-cli (~> 1.7)
-      mixlib-log (~> 1.3)
-      mixlib-shellout (~> 2.0)
-      net-sftp (~> 2.1, >= 2.1.2)
-      net-ssh (>= 2.9, < 5.0)
-      net-ssh-multi (~> 1.2, >= 1.2.1)
-      ohai (~> 13.0)
-      plist (~> 3.2)
-      proxifier (~> 1.0)
-      rspec-core (~> 3.5)
-      rspec-expectations (~> 3.5)
-      rspec-mocks (~> 3.5)
-      rspec_junit_formatter (~> 0.2.0)
-      serverspec (~> 2.7)
-      specinfra (~> 2.10)
-      syslog-logger (~> 1.6)
-      uuidtools (~> 2.1.5)
-      win32-api (~> 1.5.3)
-      win32-dir (~> 0.5.0)
-      win32-event (~> 0.6.1)
-      win32-eventlog (= 0.6.3)
-      win32-mmap (~> 0.4.1)
-      win32-mutex (~> 0.4.2)
-      win32-process (~> 0.8.2)
-      win32-service (~> 0.8.7)
-      windows-api (~> 0.4.4)
-      wmi-lite (~> 1.0)
 
 PATH
   remote: chef-config
@@ -205,13 +177,13 @@ GEM
       mixlib-cli (~> 1.4)
     artifactory (2.8.1)
     ast (2.3.0)
-    aws-sdk (2.8.14)
-      aws-sdk-resources (= 2.8.14)
-    aws-sdk-core (2.8.14)
+    aws-sdk (2.9.0)
+      aws-sdk-resources (= 2.9.0)
+    aws-sdk-core (2.9.0)
       aws-sigv4 (~> 1.0)
       jmespath (~> 1.0)
-    aws-sdk-resources (2.8.14)
-      aws-sdk-core (= 2.8.14)
+    aws-sdk-resources (2.9.0)
+      aws-sdk-core (= 2.9.0)
     aws-sigv4 (1.0.0)
     backports (3.7.0)
     binding_of_caller (0.7.2)
@@ -222,12 +194,6 @@ GEM
       logify (~> 0.1)
       mime-types
     chef-sugar (3.4.0)
-    chef-zero (5.3.2)
-      ffi-yajl (~> 2.2)
-      hashie (>= 2.0, < 4.0)
-      mixlib-log (~> 1.3)
-      rack (~> 2.0)
-      uuidtools (~> 2.1)
     cheffish (5.0.1)
       chef-zero (~> 5.0)
       net-ssh
@@ -272,9 +238,6 @@ GEM
     fauxhai (3.10.0)
       net-ssh
     ffi (1.9.18)
-    ffi (1.9.18-x86-mingw32)
-    ffi-win32-extensions (1.0.3)
-      ffi
     ffi-yajl (2.3.0)
       libyajl2 (~> 1.2)
     foodcritic (8.2.0)
@@ -355,9 +318,6 @@ GEM
       thor
     mixlib-log (1.7.1)
     mixlib-shellout (2.2.7)
-    mixlib-shellout (2.2.7-universal-mingw32)
-      win32-process (~> 0.8.2)
-      wmi-lite (~> 1.0)
     mixlib-versioning (1.1.0)
     multi_json (1.12.1)
     multi_test (0.1.2)
@@ -378,8 +338,6 @@ GEM
     net-telnet (0.1.1)
     netrc (0.11.0)
     nokogiri (1.7.1)
-      mini_portile2 (~> 2.1.0)
-    nokogiri (1.7.1-x86-mingw32)
       mini_portile2 (~> 2.1.0)
     nori (2.6.0)
     octokit (4.6.2)
@@ -413,11 +371,6 @@ GEM
     rake (11.3.0)
     rb-readline (0.5.4)
     rest-client (2.0.1)
-      http-cookie (>= 1.0.2, < 2.0)
-      mime-types (>= 1.16, < 4.0)
-      netrc (~> 0.8)
-    rest-client (2.0.1-x86-mingw32)
-      ffi (~> 1.9)
       http-cookie (>= 1.0.2, < 2.0)
       mime-types (>= 1.16, < 4.0)
       netrc (~> 0.8)
@@ -511,32 +464,11 @@ GEM
     unf (0.1.4)
       unf_ext
     unf_ext (0.0.7.2)
-    unf_ext (0.0.7.2-x86-mingw32)
     unicode-display_width (1.1.3)
     url (0.3.2)
     uuidtools (2.1.5)
     vagrant-wrapper (2.0.3)
     websocket (1.2.4)
-    win32-api (1.5.3-universal-mingw32)
-    win32-dir (0.5.1)
-      ffi (>= 1.0.0)
-    win32-event (0.6.3)
-      win32-ipc (>= 0.6.0)
-    win32-eventlog (0.6.3)
-      ffi
-    win32-ipc (0.7.0)
-      ffi
-    win32-mmap (0.4.2)
-      ffi
-    win32-mutex (0.4.3)
-      win32-ipc (>= 0.6.0)
-    win32-process (0.8.3)
-      ffi (>= 1.0.0)
-    win32-service (0.8.10)
-      ffi
-      ffi-win32-extensions
-    windows-api (0.4.4)
-      win32-api (>= 1.4.5)
     winrm (2.1.3)
       builder (>= 2.1.2)
       erubis (~> 2.7)
@@ -562,7 +494,6 @@ GEM
 
 PLATFORMS
   ruby
-  x86-mingw32
 
 DEPENDENCIES
   appbundler
@@ -571,6 +502,7 @@ DEPENDENCIES
   chef!
   chef-config!
   chef-sugar
+  chef-zero!
   cheffish
   chefspec
   chefstyle!
