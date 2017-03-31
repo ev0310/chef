@@ -39,3 +39,27 @@ task :ci_version_bump do
     end
   end
 end
+
+task :expeditor_update_version do
+  begin
+    require "rake"
+
+    Rake::Task["version:update"].invoke
+
+    # We want to log errors that occur in the following tasks, but we don't
+    # want them to stop an otherwise valid version bump from progressing.
+    begin
+      Rake::Task["changelog:update"].invoke
+    rescue Exception => e
+      puts "There was an error updating the CHANGELOG"
+      puts e
+    end
+
+    begin
+      Rake::Task["update_dockerfile"].invoke
+    rescue Exception => e
+      puts "There was an error updating the Dockerfile"
+      puts e
+    end
+  end
+end
